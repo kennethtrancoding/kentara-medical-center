@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Kentara Medical Center</title>
+		<style>
+			body {
+				background-color: rgb(18, 18, 18);
+				min-height: 100svh;
+			}
+			.underline {
+				width: fit-content;
+				height: fit-content;
+			}
+			#title {
+				font-size: 120px;
+				line-height: 50%;
+			}
+			.title-letter {
+				display: inline-block;
+				transition:
+					font-size 0.15s ease,
+					line-height 0.15s ease,
+					transform 0.15s ease,
+					text-shadow 0.15s ease;
+				transform-origin: bottom center;
+			}
+			.title-letter.is-main {
+				font-size: clamp(150px, 20vw, 400px);
+				line-height: 0.1ex;
+				text-shadow: 0 0 22px rgba(255, 255, 255, 0.9);
+			}
+			.title-letter.is-neighbor {
+				font-size: clamp(120px, 16vw, 350px);
+				line-height: 0.1ex;
+				text-shadow: 0 0 14px rgba(255, 255, 255, 0.65);
+			}
+			.link-group {
+				display: flex;
+				flex-direction: column;
+				gap: 14px;
+			}
+			#title,
+			.link {
+				font-family: Arial, Helvetica, sans-serif;
+				color: antiquewhite;
+			}
+			.link {
+				width: fit-content;
+				cursor: pointer;
+				font-size: 2.5rem;
+				text-decoration: none;
+				margin: 0;
+				display: inline-block;
+				transform: scale(1);
+				transition: transform 0.35s ease-in-out;
+			}
+			.underline::after {
+				content: "";
+				display: block;
+				height: 3px;
+				width: 100%;
+				background: antiquewhite;
+				transform: scaleX(0);
+				transform-origin: left;
+				transition: transform 0.35s ease-in-out;
+			}
+			.underline.is-hovered::after {
+				transform: scaleX(1);
+			}
+			.link.is-active {
+				animation-name: click-scale-down;
+				animation-fill-mode: forwards;
+				animation-duration: 0.05s;
+				animation-timing-function: ease-in;
+			}
+			.link.is-post-click {
+				animation-name: post-click-burst;
+				animation-duration: 0.2s;
+				animation-timing-function: cubic-bezier(0.75, 0.05, 0.51, 1.71);
+			}
+			@media (prefers-reduced-motion: reduce) {
+				.link,
+				.underline::after {
+					transition: none !important;
+				}
+			}
+			@keyframes click-scale-down {
+				0% {
+					font-size: 2.5rem;
+				}
+				100% {
+					font-size: 2.2rem;
+				}
+			}
+			@keyframes post-click-burst {
+				0% {
+					font-size: 2.2rem;
+				}
+				100% {
+					font-size: 2.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="link-group">
+			<h1 id="title">Kentara Medical Center</h1>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
